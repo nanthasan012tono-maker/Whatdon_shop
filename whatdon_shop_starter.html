@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WHATDON_SHOP | Roblox Store</title>
+<style>
+:root{--bg:#090810;--panel:#151221;--panel2:#201a30;--purple:#9b62ff;--purple2:#7138d6;--text:#f7f3ff;--muted:#aaa2ba;--line:#302842}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+header{position:sticky;top:0;z-index:5;background:#0d0a16ed;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.wrap{max-width:1100px;margin:auto;padding:0 18px}
+.nav{height:66px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-weight:900;letter-spacing:.5px;font-size:21px}.brand span{color:#b78aff}
+nav{display:flex;gap:18px}nav a{color:var(--muted);text-decoration:none;font-size:14px}
+button,.btn{border:0;border-radius:12px;padding:11px 15px;background:linear-gradient(135deg,var(--purple),var(--purple2));color:white;font-weight:750;cursor:pointer}
+.hero{margin:24px auto 18px;padding:30px;border:1px solid #4b3470;border-radius:22px;background:radial-gradient(circle at 85% 20%,#57358b88,transparent 36%),linear-gradient(135deg,#211634,#100d19 70%);overflow:hidden}
+.eyebrow{color:#c6a7ff;font-size:12px;font-weight:800;letter-spacing:1.5px}.hero h1{font-size:clamp(28px,6vw,46px);margin:10px 0}.hero p{color:#c4bbd2;max-width:570px;line-height:1.65;margin:0 0 20px}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:28px 0 14px}.section-head h2{font-size:20px;margin:0}.muted{color:var(--muted);font-size:13px}
+.categories{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.cat{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:16px 10px;text-align:center;cursor:pointer;color:var(--text)}
+.cat.active{border-color:var(--purple);background:#24183a}.cat .emoji{font-size:25px;display:block;margin-bottom:7px}.cat b{font-size:13px}
+.tools{display:flex;gap:10px;margin:14px 0}.tools input{flex:1;min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px;color:white}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{background:var(--panel);border:1px solid var(--line);border-radius:17px;overflow:hidden}
+.cover{height:145px;background:linear-gradient(135deg,#39235d,#171321);display:grid;place-items:center;font-size:44px}.card-body{padding:14px}.tag{font-size:11px;color:#d6bdff;background:#35234e;padding:5px 8px;border-radius:20px;display:inline-block}
+.card h3{font-size:16px;margin:10px 0 5px}.desc{font-size:12px;color:var(--muted);min-height:34px}.price-row{display:flex;align-items:center;justify-content:space-between;margin-top:14px}.price{font-weight:850;color:#c6a1ff}.add{padding:9px 11px;font-size:12px}
+footer{margin-top:40px;border-top:1px solid var(--line);padding:24px 0 35px;color:var(--muted);font-size:12px;line-height:1.7}
+.cart-pill{position:relative}.count{background:#fff;color:#35165d;border-radius:20px;padding:2px 7px;margin-left:5px;font-size:11px}
+.notice{background:#171321;border:1px solid var(--line);border-radius:14px;padding:13px;color:#c5bbd4;font-size:12px;line-height:1.6;margin-top:22px}
+@media(max-width:760px){nav{display:none}.grid{grid-template-columns:repeat(2,1fr)}.cover{height:120px}.categories{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:420px){.wrap{padding:0 13px}.grid{gap:9px}.card-body{padding:11px}.cover{height:105px}.hero{padding:23px 19px}.brand{font-size:18px}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+  <div class="brand">WHATDON<span>_SHOP</span></div>
+  <nav><a href="#home">หน้าหลัก</a><a href="#products">สินค้า</a><a href="#orders">ประวัติคำสั่งซื้อ</a></nav>
+  <button class="cart-pill" onclick="showCart()">ตะกร้า <span class="count" id="count">0</span></button>
+</div></header>
+<main class="wrap" id="home">
+  <section class="hero">
+    <div class="eyebrow">ROBLOX COMMUNITY STORE</div>
+    <h1>ค้นหาสิ่งที่คุณชอบ<br><span style="color:#c29aff">ที่ WHATDON_SHOP</span></h1>
+    <p>หน้าร้านค้าสำหรับเลือกชมเกม ไอเทม และสินค้าที่เกี่ยวข้องกับ Roblox พร้อมหน้ารายละเอียดและรายการสั่งซื้อในที่เดียว</p>
+    <a class="btn" href="#products" style="display:inline-block;text-decoration:none">เลือกชมสินค้า</a>
+  </section>
+  <div class="section-head"><h2>หมวดหมู่สินค้า</h2><span class="muted">เลือกหมวดที่ต้องการ</span></div>
+  <section class="categories" id="categories">
+    <div class="cat active" data-cat="ทั้งหมด"><span class="emoji">🎮</span><b>ทั้งหมด</b></div>
+    <div class="cat" data-cat="เกม Roblox"><span class="emoji">🕹️</span><b>เกม Roblox</b></div>
+    <div class="cat" data-cat="ไอเทมในเกม"><span class="emoji">💎</span><b>ไอเทมในเกม</b></div>
+    <div class="cat" data-cat="BlockSpin"><span class="emoji">🚗</span><b>BlockSpin</b></div>
+  </section>
+  <section id="products">
+    <div class="section-head"><h2>สินค้าแนะนำ</h2><span class="muted" id="result-count">ตัวอย่างสินค้า</span></div>
+    <div class="tools"><input id="search" placeholder="ค้นหาสินค้า..." aria-label="ค้นหาสินค้า"><button onclick="render()">ค้นหา</button></div>
+    <div class="grid" id="grid"></div>
+  </section>
+  <div class="notice">หมายเหตุ: นี่คือเว็บไซต์ต้นแบบสำหรับทดลองหน้าร้านและตะกร้า ยังไม่ได้เชื่อมระบบชำระเงินจริงหรือฐานข้อมูล โปรดขายเฉพาะสินค้า/บริการที่มีสิทธิ์จำหน่าย และอย่าขอรหัสผ่านบัญชี Roblox จากลูกค้า</div>
+  <section id="orders"><div class="section-head"><h2>ประวัติคำสั่งซื้อ</h2></div><p class="muted">เมื่อเชื่อมระบบสมาชิกและฐานข้อมูลแล้ว รายการสั่งซื้อของลูกค้าจะแสดงในหน้านี้</p></section>
+</main>
+<footer><div class="wrap">© 2026 WHATDON_SHOP · ร้านค้าต้นแบบธีมดำ-ม่วง<br>ติดต่อร้านค้า: เพิ่มช่องทางติดต่อของคุณภายหลัง</div></footer>
+<script>
+const products=[
+ {name:"แพ็กเริ่มต้น Roblox",cat:"เกม Roblox",price:"฿—",desc:"ตัวอย่างรายการสินค้า แก้ไขชื่อและรายละเอียดได้",emoji:"🎮"},
+ {name:"ไอเทมตกแต่ง",cat:"ไอเทมในเกม",price:"฿—",desc:"ตัวอย่างไอเทมสำหรับแสดงในหน้าร้าน",emoji:"💎"},
+ {name:"แพ็ก BlockSpin",cat:"BlockSpin",price:"฿—",desc:"ตัวอย่างหมวดสินค้า BlockSpin",emoji:"🚗"},
+ {name:"เกมแนะนำประจำร้าน",cat:"เกม Roblox",price:"฿—",desc:"เพิ่มรูปปกและรายละเอียดเกมได้ภายหลัง",emoji:"🕹️"},
+ {name:"ชุดไอเทมพิเศษ",cat:"ไอเทมในเกม",price:"฿—",desc:"ระบุสิ่งที่ลูกค้าจะได้รับให้ชัดเจน",emoji:"✨"},
+ {name:"รถแต่ง BlockSpin",cat:"BlockSpin",price:"฿—",desc:"ตัวอย่างรายการรถและของตกแต่ง",emoji:"🏎️"}
+];
+let active="ทั้งหมด",cart=[];
+function render(){
+ const q=document.getElementById('search').value.toLowerCase();
+ const list=products.filter(p=>(active==="ทั้งหมด"||p.cat===active)&&(p.name+p.desc+p.cat).toLowerCase().includes(q));
+ document.getElementById('result-count').textContent=list.length+" รายการ";
+ document.getElementById('grid').innerHTML=list.map((p,i)=>`<article class="card"><div class="cover">${p.emoji}</div><div class="card-body"><span class="tag">${p.cat}</span><h3>${p.name}</h3><div class="desc">${p.desc}</div><div class="price-row"><span class="price">${p.price}</span><button class="add" onclick="addCart('${p.name.replace(/'/g,"\\'")}')">ใส่ตะกร้า</button></div></div></article>`).join('')||'<p class="muted">ไม่พบสินค้า</p>';
+}
+function addCart(name){cart.push(name);document.getElementById('count').textContent=cart.length}
+function showCart(){alert(cart.length?"สินค้าในตะกร้า:\\n"+cart.join("\\n"):"ยังไม่มีสินค้าในตะกร้า")}
+document.querySelectorAll('.cat').forEach(el=>el.addEventListener('click',()=>{document.querySelectorAll('.cat').forEach(x=>x.classList.remove('active'));el.classList.add('active');active=el.dataset.cat;render()}));
+document.getElementById('search').addEventListener('input',render);
+render();
+</script>
+</body></html>
